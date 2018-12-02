@@ -64,7 +64,7 @@ io.on('connection', function(socket){
 
 	socket.on('on dock', function(msg, fn){
 		console.log(msg.pi, " is on the dock");
-		if (i == myPath.length){
+		if (msg.pi == myPath[i-1] && i == myPath.length){
 			io.emit('finish',{pi: 'Destination'})
 			console.log("Destination Arrived!!");
 
