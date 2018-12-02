@@ -26,23 +26,23 @@ socket.on('turn on', function(msg){
     
     
     if(msg.pi == myNodeNumber){
-        relay.writeSync(1);
-   console.log("turned on", msg.pi)        
+       relay.writeSync(1);
+       console.log("turned on", msg.pi)        
        console.log("roomba moving to", msg.pi)
         
 
-   hall.watch((err, value) => {
-           if (err) {
-              throw err;
-           }
-            
-           if (value == 0){         
-         console.log("Sensed")
-              socket.emit('on dock', {pi: myNodeNumber});
-         relay.writeSync(0)
-              console.log("arrived to", myNodeNumber);
-           }
-   });
+       hall.watch((err, value) => {
+               if (err) {
+                  throw err;
+               }
+                
+               if (value == 0){         
+                  console.log("Sensed")
+                  socket.emit('on dock', {pi: myNodeNumber});
+                  relay.writeSync(0)
+                  console.log("arrived to", myNodeNumber);
+               }
+       });
     }
 
 

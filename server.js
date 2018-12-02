@@ -69,7 +69,7 @@ io.on('connection', function(socket){
 			console.log("Destination Arrived!!");
 
 		}
-		else{
+		else if (msg.pi == myPath[i-1]){
 			console.log("turn on ", myPath[i]);
 			io.emit('turn on', {pi: myPath[i]});
 			i++;
